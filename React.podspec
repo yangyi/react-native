@@ -188,4 +188,9 @@ Pod::Spec.new do |s|
     ss.source_files         = "Libraries/RCTTest/**/*.{h,m}"
     ss.frameworks           = "XCTest"
   end
+
+  s.subspec "_ignore_me_subspec_for_linting_" do |ss|
+    ss.dependency             "React/Core"
+    ss.dependency             "React/CxxBridge"
+  end
 end
