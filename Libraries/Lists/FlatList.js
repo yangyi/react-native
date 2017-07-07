@@ -38,7 +38,7 @@ type RequiredProps<ItemT> = {
    *           onShowUnderlay={separators.highlight}
    *           onHideUnderlay={separators.unhighlight}>
    *           <View style={{backgroundColor: 'white'}}>
-   *             <Text>{item.title}}</Text>
+   *             <Text>{item.title}</Text>
    *           </View>
    *         </TouchableHighlight>
    *       )}
@@ -304,8 +304,11 @@ type DefaultProps = typeof defaultProps;
  *   Alternatively, you can provide a custom `keyExtractor` prop.
  *
  */
-class FlatList<ItemT>
-  extends React.PureComponent<DefaultProps, Props<ItemT>, void> {
+class FlatList<ItemT> extends React.PureComponent<
+  DefaultProps,
+  Props<ItemT>,
+  void,
+> {
   static defaultProps: DefaultProps = defaultProps;
   props: Props<ItemT>;
   /**
@@ -385,6 +388,12 @@ class FlatList<ItemT>
   getScrollableNode() {
     if (this._listRef) {
       return this._listRef.getScrollableNode();
+    }
+  }
+
+  setNativeProps(props: Object) {
+    if (this._listRef) {
+      this._listRef.setNativeProps(props);
     }
   }
 
